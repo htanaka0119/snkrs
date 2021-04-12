@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang=“ja”>
+  <head>
+    <meta charset=“UFT-8”>
+    <link rel="stylesheet" href="./stylesheet/style.css" type="text/css" />
+    <title>aaa</title>
+  </head>
+  <style>
+    .btn--orange,
+    a.btn--orange {
+      color: #fff;
+      background-color: #eb6100;
+    }
+    .btn--orange:hover,
+    a.btn--orange:hover {
+      color: #fff;
+      background: #f56500;
+    }
+    a.btn--radius {
+      border-radius: 100vh;
+    }
+  </style>
+  <body>
+    <h2>今日のスニーカーを決める</h2>
+    <form method="post" action="/new">
+        <p>内容<input type="text" name="text" size="30" placeholder="入力してください" ></p>
+        <p>状態
+            <select name="status">
+                <option value="未実行">1軍</option>
+                <option value="実行中">2軍</option>
+                <option value="終了">3軍</option>
+            </select>
+        </p>
+        <p><input type="submit" value="Send"></p>
+    </form>
+    
+    <ul>
+        {{ range .todos }}
+            <li>内容：{{ .Text }}、状態：{{ .Status }}
+                <label><a href="/detail/{{.ID}}">編集</a></label>
+                <label><a href="/delete_check/{{.ID}}">削除</a></label>
+            </li>
+        {{end}}
+        <li>今日履くやつ{{ .Kicks }}</li>
+    </ul>
+  </body>
+</html>

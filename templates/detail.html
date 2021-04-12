@@ -1,0 +1,29 @@
+<body>
+  <h2>aaa</h2>
+  
+  <p>{{.user.ID}}</p>
+  <p>{{.user.Name}}</p>
+  <p>{{.user.Age}}</p>
+  
+  <form method="post" action="/update/{{.todo.ID}}">
+      <p>内容<input type="text" name="text" size="30" value="{{.todo.Text}}" ></p>
+      <p>状態
+          <select name="status">
+              {{if eq .todo.Status "1軍"}}
+                  <option value="1軍" selected>1軍</option>
+                  <option value="2軍">2軍</option>
+                  <option value="3軍">3軍</option>
+              {{else if eq .todo.Status "2軍"}}
+                  <option value="1軍">1軍</option>
+                  <option value="2軍" selected>2軍</option>
+                  <option value="3軍">3軍</option>
+              {{else}}
+                  <option value="1軍">1軍</option>
+                  <option value="2軍">2軍</option>
+                  <option value="3軍" selected>3軍</option>
+              {{end}}
+          </select>
+      </p>
+      <p><input type="submit" value="Send"></p>
+  </form>
+  </body>
